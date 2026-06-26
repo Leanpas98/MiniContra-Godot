@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://chhjrnp166k0k"]
+
+[ext_resource type="Script" uid="uid://d1gfn8xxxalpq" path="res://boss_green.gd" id="1_8k8d5"]
+[ext_resource type="Texture2D" uid="uid://qgps2p76prq5" path="res://AHORASI.png" id="2_8k8d5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k8d5"]
+size = Vector2(36.5, 40.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4phxg"]
+size = Vector2(36, 40.25)
+
+[node name="BossGreen" type="CharacterBody2D" unique_id=2133568408]
+scale = Vector2(4, 4)
+collision_layer = 4
+script = ExtResource("1_8k8d5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1905831201]
+z_index = 20
+texture_filter = 5
+position = Vector2(10.75, 0.49999952)
+scale = Vector2(1.1882937, 1.0657895)
+texture = ExtResource("2_8k8d5")
+region_enabled = true
+region_rect = Rect2(36, 0, 34, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=327015470]
+z_index = 21
+position = Vector2(9.5, 1.5)
+shape = SubResource("RectangleShape2D_8k8d5")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=215798482]
+z_index = 23
+position = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1000090279]
+z_index = 24
+position = Vector2(8.25, 1)
+shape = SubResource("RectangleShape2D_4phxg")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

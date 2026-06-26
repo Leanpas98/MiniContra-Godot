@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://lnv7r43se4b8"]
+
+[ext_resource type="Script" uid="uid://dultq8ktss2hm" path="res://boss_power.gd" id="1_nqwx1"]
+[ext_resource type="Texture2D" uid="uid://c7dhqhnhdcyd5" path="res://assets/boss_power_96px.png" id="1_oi1xj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqwx1"]
+size = Vector2(108, 60)
+
+[node name="BossPower" type="Area2D" unique_id=1440499580]
+script = ExtResource("1_nqwx1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=272192995]
+texture = ExtResource("1_oi1xj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407329514]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_nqwx1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

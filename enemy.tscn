@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b50880humr24x"]
+
+[ext_resource type="Script" uid="uid://b6m8efij856oj" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://csf4s2it74ane" path="res://assets/fierce_soldier_sprites_-_enemies_and_bosses.png" id="2_4gyqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
+size = Vector2(65, 78)
+
+[node name="Enemy" type="Area2D" unique_id=786776907]
+script = ExtResource("1_4gyqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1354738781]
+texture_filter = 1
+position = Vector2(12.049999, 11.799999)
+scale = Vector2(0.9825398, 0.8681818)
+texture = ExtResource("2_4gyqm")
+region_enabled = true
+region_rect = Rect2(65, 4, 63, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1329681677]
+position = Vector2(12.5, 8)
+shape = SubResource("RectangleShape2D_iifgy")
+
+[node name="EnemyMuzzle" type="Marker2D" parent="." unique_id=1607357464]
+position = Vector2(-14, -1)
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=1477518628]
+position = Vector2(-17, -14)
+target_position = Vector2(0, 60)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
